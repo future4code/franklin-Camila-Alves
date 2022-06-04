@@ -8,6 +8,8 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
+//**********STYLED-COMPONENTS**********
+
 const PostContainer = styled.div`
   border: 1px solid gray;
   width: 300px;
@@ -54,7 +56,18 @@ function Post(props){
   const [numeroComentarios, setNumeroComentarios] = useState(0)
 
   const onClickCurtida = () => {
-    console.log('Curtiu!')
+    setCurtido(!curtido)
+
+    if(curtido){ 
+      setnumeroCurtidas(numeroCurtidas - 1)
+      console.log('Descurtiu')
+    } else { 
+      setnumeroCurtidas(numeroCurtidas + 1)
+      console.log('Curtiu')
+    }
+
+    
+    console.log(curtido)
   }
   
   const onClickComentario = () => {
@@ -81,7 +94,7 @@ function Post(props){
     let componenteComentario
 
     if(comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario value={comentando} aoEnviar={aoEnviarComentario} onChange={aoEnviarComentario} />
     }
 
   return(
@@ -97,7 +110,7 @@ function Post(props){
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={onClickCurtida}
-          valorContador={state.numeroCurtidas}
+          valorContador={numeroCurtidas}
         />
 
         <IconeComContador

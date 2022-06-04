@@ -16,10 +16,23 @@ export function SecaoComentario(props) {
 		<CommentContainer>
 			<InputComentario
 				placeholder={'Comentário'}
-				value={''}
+				value={props.Comentario}
 				onChange={props.onChangeComentario}
 			/>
 			<button onClick={props.aoEnviar}>Enviar</button>
 		</CommentContainer>
 	)
 }
+
+{/* <Cartao>
+        <GlobalStyle />
+        <Info>Nome| {inputNome}</Info>
+        <Info>Número| {inputNumero}</Info>
+        <Info>Nome| {inputCVV}</Info>
+      </Cartao>
+      
+      <input value={inputNome} onChange={handleInputNome} /><br />
+      <input value={inputNumero} onChange={handleInputNumero} /><br />
+      <input value={inputCVV} onChange={handleInputCVV} /><br />
+      <button onClick={limparCampo}>Limpar campo</button>
+       */}
