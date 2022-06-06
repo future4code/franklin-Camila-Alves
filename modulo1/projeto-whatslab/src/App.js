@@ -7,7 +7,7 @@ import icone from './icone.png';
 /********** ---WHATSLAB--- **********/
 const WhatsLab = styled.div `
   
-  width: 940px;
+  width: 510px;
   background: antiquewhite;
   padding: 20px;
 `
@@ -49,7 +49,6 @@ const Mensagem = styled.p `
 const Input = styled.div `
     display: flex;
     flex-direction: row;
-    width: 900px;
     padding: 20px;
     border-radius: 60px;
     background: bisque;
@@ -92,7 +91,7 @@ const LabelMensagem = styled.div `
 `
 
 const InserirMensagem = styled.input `
-    width: 600px;
+    width: 200px;
     padding: 10px;
     margin: 0 8px 8px 4px;
     box-sizing: border-box;
@@ -146,10 +145,7 @@ function App() {
     chegouMensagem.push(inputBatePapo)
     setBatePapo(chegouMensagem)
 
-    // const novaListaPessoas = [...pessoas, inputPessoa]
-    // setPessoas(novaListaPessoas)
 
-    //setInputConversa([...conversa, inputConversa])
   }
 
   const imprimeBatePapo = batePapo.map( (novaMensagem) => {
