@@ -21,9 +21,34 @@ const Botao = styled.button `
 
 function App() {
 
-  const VaiParaEtapa1 = () => {
-    return <Etapa1 />
-  }
+  const[etapaState, setEtapaState] = useState('abertura')
+
+   const proximaEtapa = () => {
+    setEtapaState('etapa1')
+   }
+
+   const etapaRender = () => {
+      switch (etapaState) {
+        case 'etapa1':
+            return (<Etapa1 />)
+            break;
+
+        case 'etapa2':
+          return (<Etapa2 />)
+          break;
+
+        case 'etapa3':
+          return (<Etapa3 />)
+          break;
+
+        case 'etapa4':
+          return (<Etapa4 />)
+          break;
+
+         default:
+            break;
+      }
+   }
 
   return (
     <div>
@@ -31,12 +56,9 @@ function App() {
         <h1>Olá</h1>
         <p>Obrigada por responder a nossa pesquisa</p>
         <p>(prometemos que ela será rápida)</p>
-        <Botao onClick={VaiParaEtapa1}>Clique aqui para começar a nossa pesquisa</Botao>
+        <Botao onClick={proximaEtapa}>Clique aqui para começar a nossa pesquisa</Botao>
       </Saudacoes>
-      <Etapa1 />
-      <Etapa2 />
-      <Etapa3 />
-      <Etapa4 />
+      {etapaRender()}
     </div>
   );
 }
