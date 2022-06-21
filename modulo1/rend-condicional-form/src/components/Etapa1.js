@@ -35,20 +35,25 @@ const Etapa1 = () => {
     
     const options = ["Ensino Médio Completo", "Ensino Médio Incompleto", "Ensino Superior Completo", "Ensino Superior Incompleto"];
 
-    const[etapaState, setEtapaState] = useState('')
+    const[etapa1, setEtapa1] = useState(true)
 
    const proximaEtapa = () => {
-    setEtapaState('etapa2')
+    setEtapaState(!etapa1)
    }
 
    const etapaRender = () => {
-      switch (etapaState) {
-        case 'etapa2':
-          return (<Etapa2 />)
-          break;
+    switch (etapa1) {
+        case true :
+           return (
+           <Etapa1 />)
+           break;
+     
+        case false :
+           return (<Etapa2 />)
+           break;
 
-         default:
-            break;
+        default:
+           break;
       }
    }
 
