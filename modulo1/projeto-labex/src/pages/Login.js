@@ -11,9 +11,14 @@ const Login = () => {
         navigate("/adminHome")
     }
 
+    const goToHome = () => {
+        navigate(-1)
+    }
+
     return(
         <div>
             <p>Você está em Login!</p>
+            <button onClick={goToHome}>Voltar</button>
             <button onClick={goToAdminHome}>Fazer login</button>
         </div>
     )
