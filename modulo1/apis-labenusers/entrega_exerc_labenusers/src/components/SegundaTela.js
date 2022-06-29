@@ -43,6 +43,25 @@ const SegundaTela = () => {
         })
     }
 
+    const [procuraUser, setProcuraUser] = useState([])
+    const [searchInput, setSearchInput] = useState("")
+
+    const searchUser = (name) => {
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${name}&email=`, {
+            headers: {
+                Authorization: "camila-yung-franklin"
+            }
+        }).then((response) => {
+            console.log(response)
+            setProcuraUser(response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    const hangleUserProcurado = (event) => {
+        setSearchInput(event.target.value)
+    }
 
     useEffect(pegaUsers, [])
 
@@ -60,8 +79,11 @@ const SegundaTela = () => {
             <h3>Procurar usuário</h3>
 
             <PesquisaUsuario>
-                <Item><input></input></Item>
-                <Item><button>Salvar edição</button></Item>
+                <Item><input value={searchInput} onChange={hangleUserProcurado}></input></Item>
+                <Item><button onClick={() => {searchUser(searchInput)}}>Procuar usuário</button></Item>
+                {procuraUser.map((achei) => {
+                    return <p key={achei.id}>{achei.name}</p>
+                })}
             </PesquisaUsuario>
         </div>
     )
