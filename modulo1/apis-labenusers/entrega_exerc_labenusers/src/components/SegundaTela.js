@@ -32,9 +32,6 @@ const SegundaTela = () => {
     const deletaUser = (id) => {
 
         axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
-            // params: {
-            //     "id": delUserId
-            // },
             headers: {
                 Authorization: "camila-yung-franklin"
             }
