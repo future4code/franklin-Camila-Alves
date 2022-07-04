@@ -2,31 +2,46 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useForm from "../hooks/useForm.js";
 
 const Login = () => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const { form, onChange, cleanFields } = useForm({email: "", password: ""})
 
-    const handleInputEmail = (event) => {
-        setEmail(event.target.value)
-    }
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
 
-    const handleInputPassword = (event) => {
-        setPassword(event.target.value)
-    }
+    // const [form, setForm] = useState({
+    //     email: "",
+    //     password: ""
+    // })
+
+    // const handleInputEmail = (event) => {
+    //     setForm({...form, email: event.target.value})
+    // }
+
+    // const handleInputPassword = (event) => {
+    //     setForm({...form, password: event.target.value})
+    // }
+
+    // const onChange = (event) => {
+    //     setForm({...form, [event.target.name]: event.target.value})
+    // }
 
     const navigate = useNavigate()
 
-    const Logar = () => {
-        console.log(email, password)
+    const Logar = (event) => {
+
+        event.preventDefault()
         
-        const body = {
-            email: email,
-            password: password
-        }
+        // const body = {
+        //     email: email,
+        //     password: password
+        // }
+
+        console.log(form)
         
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/camila-yung-franklin/login`, body)
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/camila-yung-franklin/login`, form)
         .then((response) => {
             console.log('Deu certo: ', response.data.token)
             localStorage.setItem('token', response.data.token)
@@ -35,6 +50,8 @@ const Login = () => {
             console.log('Deu errado: ', error.response)
             alert(error.response.data.message)
         })
+
+        cleanFields()
     }
 
     const goToHome = () => {
@@ -45,12 +62,17 @@ const Login = () => {
         <div>
             <p>Você está em Login!</p>
 
-            <input placeholder="email" type="email" value={email} onChange={handleInputEmail} />
-            <input placeholder="password" type="password" value={password} onChange={handleInputPassword} />
-            <button onClick={Logar}>Enviar</button>
-            <br/>
+            <form onSubmit={Logar}>
 
+            <input name="email" placeholder="E-mail" type="email" value={form.email} onChange={onChange} required/>
+            <input name="password" placeholder="Senha" type="password" value={form.password} onChange={onChange} pattern={".{3,}"} title={"Sua senha deve ter, no mínimo, três caracteres."} required/>
+            <br/>
             <button onClick={goToHome}>Voltar</button>
+            <button>Enviar</button>
+    
+            </form>
+
+            
         </div>
     )
 }

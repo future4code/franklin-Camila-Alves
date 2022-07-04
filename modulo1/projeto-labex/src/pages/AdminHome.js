@@ -24,6 +24,7 @@ const AdminHome = () => {
 
             <button onClick={goToLogin}>Voltar</button>
             <button onClick={goToCreateTrip}>Criar viagem</button>
+            <button >Logout</button>
         </div>
     )
 }
