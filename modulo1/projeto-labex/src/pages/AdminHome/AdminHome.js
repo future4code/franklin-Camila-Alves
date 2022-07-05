@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TripDetails from "./TripDetails";
+import TripDetails from "../TripDetails/TripDetails";
 
 const AdminHome = () => {
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import useForm from "../hooks/useForm.js";
-import useProtectedPage from "../hooks/useProtectedPage";
+import useForm from "../../hooks/useForm.js";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 // 1. Copiar o custom hook useForm para a pasta de hooks
 // 2. Importar o hook na tela que desejar 
