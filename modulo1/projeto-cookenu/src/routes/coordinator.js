@@ -1,23 +1,20 @@
-import { useNavigate } from "react";
 
-const navigate = useNavigate()
-
-export const goToLogin = () => {
+export const goToLogin = (navigate) => {
     navigate("/login")
 }
 
-export const goToSignUp = () => {
+export const goToSignUp = (navigate) => {
     navigate("/cadastro")
 }
 
-export const goToRecipesLis = () => {
+export const goToRecipesList = (navigate) => {
     navigate("/")
 }
 
-export const goToAddRecipe = () => {
+export const goToAddRecipe = (navigate) => {
     navigate("/adicionar-receita")
 }
 
-export const goToRecipeDetail = () => {
+export const goToRecipeDetail = (navigate, id) => {
     navigate(`/detalhe/${id}`)
 }

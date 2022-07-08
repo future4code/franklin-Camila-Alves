@@ -1,12 +1,21 @@
 import React from "react";
+import { LogoImage, ScreenContainer } from "./styled";
+import logo from "../../assets/logo.png"
+import SignUpForm from "./SignUpForm";
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
-const SingUpPage = () => {
+const SignUpPage = () => {
 
-    return(
-        <div>
-            <h1>SingUpPage</h1>
-        </div>
+    useUnprotectedPage()
+
+    return (
+        <ScreenContainer>
+
+            <LogoImage src={logo} />
+            <SignUpForm />
+
+        </ScreenContainer>
     )
 }
 
-export default SingUpPage;
+export default SignUpPage;

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AddRecipePage from "../pages/AddRecipePage/AddRecipePage";
 import ErrorPage from "../pages/ErrorPage.js/ErrorPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
@@ -7,14 +7,13 @@ import RecipeDetailPage from "../pages/RecipeDetailPage/RecipeDetailPage";
 import RecipesListPage from "../pages/RecipesListPage/RecipesListPage";
 import SingUpPage from "../pages/SignUpPage/SignUpPage";
 
-const Router = () => {
+const Router = ({rightButton, setRightButton}) => {
 
 
     return (
-        <BrowserRouter>
             <Routes>
 
-                <Route path="login" element={<LoginPage />} />
+                <Route path="login" element={<LoginPage rightButton={rightButton} setRightButton={setRightButton} />} />
 
                 <Route path="cadastro" element={<SingUpPage />} />
                     
@@ -27,7 +26,6 @@ const Router = () => {
                 <Route element={<ErrorPage />} />
                     
             </Routes>
-        </BrowserRouter>
     )
 }
 
