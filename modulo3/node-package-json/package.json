@@ -8,5 +8,5 @@
     "script": "node ./index.js"
   },
   "author": "camiyung",
-  "license": "ISC"
+  "license": "ISC" 
 }
