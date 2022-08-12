@@ -1,0 +1,11 @@
+{
+  "name": "aula-node-exercicio1",
+  "version": "1.0.0",
+  "description": "Resolução do exercício 1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "Camila Yung Alves",
+  "license": "ISC"
+}
