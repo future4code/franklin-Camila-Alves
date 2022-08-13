@@ -1,1 +1,1 @@
-//escreva o seu código aqui
+console.log("Olá, isso é um teste")
