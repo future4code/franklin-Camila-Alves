@@ -1,0 +1,124 @@
+# Introdução 
+
+## Exercício 1
+
+a) Definição das variáveis
+- **id**: identificador único (PRIMARY KEY), string de no máximo 255 caracteres;
+- **name**: string de no máximo 255 caracteres, não recebe valores do=e tipo null;
+- **salary**: não recebe valores de tipo null;
+- **birth_date**: representação de data, não recebe valores de tipo null;
+- **name**: string de no máximo 6 caracteres, não recebe valores do=e tipo null.
+
+b) 
+- **SHOW DATABASES**: apresenta as bases de dados disponíveis (nesse caso o da turma);
+- **SHOW TABLES**: apresenta as tabelas disponíveis na base de dados (nesse caso o de professores, feito em aula, e o do exercício);
+
+c) O comando **DESCRIBE** apresenta todas as propriedades das variáveis, entre elas:
+- O tipo de variável com **type**;
+- Se a variável aceita ou não valor **NULL**;
+- Se a variável receber ou não algum tipo de chave/identificador através de uma **KEY**;
+
+## Exercício 2
+
+b) 
+Error Code: 1062. Duplicate entry '002' for key 'PRIMARY' / **Entrada duplicada '002' para a chave 'PRIMÁRIO'**
+Elemento **id: "002"** já existe e como é de caráter primário, informações repetidas não podem ser inseridas para esse tipo de elemento.
+
+c)
+Error Code: 1136. Column count doesn't match value count at row 1 / **A contagem das colunas não corresponde à contagem de valores na linha 1**
+Faltam informações para ser inseridas, entre elas: **birth_date**, **gender**.
+
+d)
+Error Code: 1364. Field 'name' doesn't have a default value / **O campo 'nome' não tem um valor por defeito**
+A variável **name** é do **NOT NULL** por isso, ela não pode receber valor vazio
+
+e)
+Error Code: 1292. Incorrect date value: '1950' for column 'birth_date' at row 1 / **Valor de data incorrecto: '1950' para a coluna 'data_de_nascimento' na linha 1**
+A variável **birth_date** deve ser escrita entre aspas
+
+## Exercício 3
+
+a) SELECT * FROM Actor WHERE gender = "female";
+
+b) SELECT salary from Actor WHERE name = "Tony Ramos";
+
+c) Zero linhas retornam, isso acontece porque gender recebe somente as opções de "male" e "female", ao solicitar "invalid" faz com que não retorne nenhum resultado.
+
+d) 
+Error Code: 1054. Unknown column 'nome' in 'field list' / **Coluna desconhecida 'nome' em 'lista de campos'**
+Variável nome não existe, para corrigir o erro é necessário usar a query abaixo
+SELECT id, **name** from Actor WHERE id = "002"
+
+## Exercício 4
+
+a) Seleciona todas as informações da tabela Actor, onde o nome comece com a letra A ou com a letra J e o salário seja maior que 300000
+
+b) SELECT * FROM Actor
+WHERE name NOT LIKE "A%" AND salary > 350000;
+
+c) SELECT * FROM Actor
+WHERE name LIKE "%g%";
+
+d) SELECT * FROM Actor
+WHERE (name LIKE "%a%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000;
+
+## Exercício 5
+
+a) 
+CREATE TABLE Filmes (
+		id INT PRIMARY KEY,
+        nome VARCHAR(255) NOT NULL UNIQUE,
+		sinopse TEXT NOT NULL,
+        data_lancamento DATE NOT NULL,
+        avaliacao INT NOT NULL
+);
+
+b) 
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+VALUES(
+  "001", 
+  "Se Eu Fosse Você",
+  "Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos",
+  "2006-01-06", 
+  7
+);
+
+c) 
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+VALUES(
+  "002", 
+  "Doce de Mãe",
+  "Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela",
+  "2012-12-27", 
+  10
+);
+
+d) 
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+VALUES(
+  "003", 
+  "Dona Flor e Seus Dois Maridos",
+  "Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.",
+  "2017-11-02", 
+  8
+);
+
+e) SELECT * FROM Filmes;
+
+## Exercício 6
+
+a) SELECT id, nome, avaliacao FROM Filmes WHERE id = "003";
+
+b) SELECT * FROM Filmes WHERE nome = "Doce de Mãe";
+
+c) SELECT id, nome, sinopse FROM Filmes WHERE avaliacao > 7;
+
+## Exercício 7
+
+a) SELECT * FROM Filmes WHERE nome LIKE "%vida%";
+
+b) SELECT * FROM Filmes WHERE nome LIKE "%doce%" OR sinopse LIKE "%filme%";
+
+c) SELECT * FROM Filmes WHERE data_lancamento < "2022-08-24";
+
+d) SELECT * FROM Filmes WHERE data_lancamento < "2022-08-24" AND (nome LIKE "%doce%" OR sinopse LIKE "%filme%") AND avaliacao > 7;
