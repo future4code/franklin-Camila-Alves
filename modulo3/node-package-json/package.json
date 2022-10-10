@@ -1,0 +1,12 @@
+{
+  "name": "package-json",
+  "version": "1.0.0",
+  "description": "Aula (01.08.2022) | Node e package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "script": "node ./index.js"
+  },
+  "author": "camiyung",
+  "license": "ISC"
+}
