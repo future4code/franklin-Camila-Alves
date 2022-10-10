@@ -6,7 +6,23 @@ export const ContainerPage = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => {
+        switch (props.backgroundColors) {
+            case 0: 
+                return '#6BEFA3';
+            case 1: 
+                return '#8666EF';
+            case 2: 
+                return '#DD7AC6';
+            case 3: 
+                return '#FFAB64';
+            case 4: 
+                return '#5AAD7D';
+            case 5: 
+                return '#BFAF83';
+            
+        }
+    }};
     /* ${(props) => props.backgroundColors} */
 
     @media screen and (max-width: 524px) {
@@ -21,8 +37,7 @@ export const ContainerPage = styled.div`
         display: flex;
         flex-direction: row;
         width: 1600px;
-    }
-    
+    }  
 `
 
 export const ContainerSelect = styled(Box)`

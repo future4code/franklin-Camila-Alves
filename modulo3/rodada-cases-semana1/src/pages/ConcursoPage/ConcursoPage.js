@@ -1,6 +1,5 @@
 import React from "react"
 import logo from "../../assets/Logo_Sena.svg"
-import { backgroundColors } from "../../constants/colors"
 import { BASE_URL } from "../../constants/urls"
 import useRequestData from "../../hooks/useRequestData"
 import { 
@@ -21,7 +20,7 @@ import {
 
 const ConcursoPage = () => {
 
-    const [loteriaSelecionada, setLoteriaSelecionada] = React.useState('')
+    const [loteriaSelecionada, setLoteriaSelecionada] = React.useState(0)
 
     const loterias = useRequestData([], `${BASE_URL}/loterias`)
     const concursos = useRequestData([], `${BASE_URL}/loterias-concursos`)
@@ -56,7 +55,7 @@ const ConcursoPage = () => {
       }
     
     return (
-        <ContainerPage bgColor={backgroundColors[loteriaSelecionada].backgroundColor} >
+        <ContainerPage backgroundColors={loteriaSelecionada}>
             {/* backgroundColors={backgroundColors[loteriaSelecionada].backgroundColor} */}
 
             <ContainerSelect>
