@@ -52,11 +52,16 @@ const ConcursoPage = () => {
           const nomeEscolhido = loterias.find((loteria) => loteria?.id == loteriaSelecionada)
 
           return nomeEscolhido?.nome.toUpperCase()
-      }
+    }
+
+    // const DataConcurso = () => {
+    //     const data = resultadoConcurso.find((dataConc) => dataConc?.data == loteriaSelecionada)
+
+    //     return data?.data
+    // }
     
     return (
         <ContainerPage backgroundColors={loteriaSelecionada}>
-            {/* backgroundColors={backgroundColors[loteriaSelecionada].backgroundColor} */}
 
             <ContainerSelect>
 
@@ -78,6 +83,7 @@ const ConcursoPage = () => {
                     {loterias && <Loteria>{NomeLoteria()}</Loteria>}
                     </ContainerDesktop>
                     {loterias && <Concurso>CONCURSO Nº {pegaIdConcurso()}</Concurso>}
+                    {/* {resultadoConcurso && <p>{DataConcurso()}</p>} */}
                 </ContainerLogo>
 
             </ContainerSelect>
